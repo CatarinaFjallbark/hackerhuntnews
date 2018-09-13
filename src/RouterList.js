@@ -4,44 +4,60 @@ import logo from "./logo.png"
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 const Wrapper = styled.div`
-
+  display: flex;
 `
+
 const UlStyle = styled.ul`
 
 `
 const ListItemStyle = styled.li`
-  font-size: 1em;
-  list-style: square inside url(${logo});
+  list-style: none;
+  margin-bottom: 7px;
 `
+const ImgBulletStyle = styled.img`
+  height: 0.9em;
+  width: auto;
+  margin-top: 3px;
+`
+const StyledLinkComponent = (props) => (
+  <Wrapper>
+    <ImgBulletStyle src={logo} alt="bulletlogo"></ImgBulletStyle>
+    <Link
+      to={props.to}
+      style={{ textDecoration: "none", color: "#000000", fontWeight: "300", fontFamily: "Verdana", paddingLeft: "10px", fontSize: "1.1em"}}>
+      {props.text}
+    </Link>
+  </Wrapper>
+);
 
 const RouterList = () => (
   <Router>
-    <Wrapper>
+    <div>
       <UlStyle>
         <ListItemStyle>
-          <Link to="/">All</Link>
+          <StyledLinkComponent to="/" text="All" />
         </ListItemStyle>
         <ListItemStyle>
-          <Link to="/about">Development</Link>
+          <StyledLinkComponent to="/about" text="About" />
         </ListItemStyle>
         <ListItemStyle>
-          <Link to="/topics">Systems</Link>
+          <StyledLinkComponent to="/topics" text="Systems" />
         </ListItemStyle>
         <ListItemStyle>
-          <Link to="/tool">Tool</Link>
+          <StyledLinkComponent to="/tool" text="Tool" />
         </ListItemStyle>
         <ListItemStyle>
-          <Link to="/data">Data science</Link>
+          <StyledLinkComponent to="/data" text="Data science" />
         </ListItemStyle>
         <ListItemStyle>
-          <Link to="/blockchain">Blockchain</Link>
+          <StyledLinkComponent to="/blockchain" text="Blockchain" />
         </ListItemStyle>
       </UlStyle>
 
       <Route exact path="/" component={Home} />
       <Route path="/about" component={About} />
       <Route path="/topics" component={Topics} />
-    </Wrapper>
+    </div>
   </Router>
 );
 
