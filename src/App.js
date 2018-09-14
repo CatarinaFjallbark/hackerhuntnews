@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import RouterList from './RouterList';
+import HackerPost from './HackerPost';
 import styled from 'styled-components';
 import logo from "./logo.png"
 
@@ -15,9 +16,12 @@ const LogoDiv = styled.div`
     justify-content: center;
     align-items: center;
 `
-const ImgStyle = styled.img`
-    max-width: 48px;
-    max-height: 48px;
+const LogoStyle = styled.div`
+    color: orange;
+    font-size: 4em;
+    font-weight:bold;
+    font-family: Helvetica;
+    text-decoration: underline;
 `
 const SearchDiv = styled.div`
     display: flex;
@@ -49,9 +53,19 @@ const InputStyle = styled.input`
 `
 
 const MenuDiv = styled.div`
+    display: flex;
+    flex-direction: column;
 `
 const ListDiv = styled.div`
-    background: yellow;
+`
+const HeaderStyle = styled.div`
+  font-size: 1em;
+  font-weight: light;
+  font-family: Helvetica;
+  margin-top:30px;
+  margin-bottom: 20px;
+  color: gray;
+  margin-left: 40px;
 `
 
 class App extends Component {
@@ -59,16 +73,18 @@ class App extends Component {
     return (
       <Wrapper>
         <LogoDiv>
-          <ImgStyle src={logo} alt="logo"></ImgStyle>
+          <LogoStyle>HH</LogoStyle>
         </LogoDiv>
         <SearchDiv>
           <HeadLineStyle>Hacker Hunt News</HeadLineStyle>
           <InputStyle type="text:focus" placeholder="search news"></InputStyle>
         </SearchDiv>
         <MenuDiv>
+          <HeaderStyle>TOPICS</HeaderStyle>
           <RouterList />
         </MenuDiv>
         <ListDiv>
+          <HackerPost />
         </ListDiv>
       </Wrapper>
     );
