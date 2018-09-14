@@ -33,11 +33,11 @@ const HeadLineStyle = styled.div`
     font-size: 40px;
     font-family: Helvetica
     color: orange;
-    padding: 20px;
+    padding: 25px;
 `
 
 const InputStyle = styled.input`
-    width: 80%;
+    width: 87%;
     height: 40px;
     border: 3px solid #555;
     box-sizing: border-box;
