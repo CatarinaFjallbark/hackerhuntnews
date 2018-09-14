@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import RouterList from './RouterList';
-import HackerPost from './HackerPost';
+import RouterList from './components/RouterList';
+import HackerPost from './components/News/HackerPost';
 import styled from 'styled-components';
-import logo from "./logo.png"
+import logo from "./icons/logo.png"
 
 const Wrapper = styled.div`
     display:grid;
