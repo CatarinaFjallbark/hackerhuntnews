@@ -1,7 +1,13 @@
 import React from 'react';
+import { connect } from 'react-redux'
 import styled from 'styled-components';
 import logo from "./icons/logo.png"
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Link } from "react-router-dom";
+
+import {
+  showTAGS,
+  navigationList
+} from '../reducers/posts'
 
 const Wrapper = styled.div`
   display: flex;
@@ -18,63 +24,35 @@ const ImgBulletStyle = styled.img`
   margin-top: 4px;
 `
 const StyledLinkComponent = (props) => (
-  <Wrapper>
+  <Wrapper onClick={() => props.tagsProp(props.text)}>
     <ImgBulletStyle src={logo} alt="bulletlogo"></ImgBulletStyle>
     <Link
       to={props.to}
-      style={{ textDecoration: "none", color: "#000000", fontWeight: "300", fontFamily: "Verdana", paddingLeft: "10px", fontSize: "1.1em"}}>
+      style={{ textDecoration: "none", color: "#000000", fontWeight: "300", fontFamily: "Verdana", paddingLeft: "10px", fontSize: "1.1em" }}>
       {props.text}
     </Link>
   </Wrapper>
 );
 
-const RouterList = () => (
+const RouterList = ({ tagsProp }) => (
   <Router>
     <div>
       <UlStyle>
-        <ListItemStyle>
-          <StyledLinkComponent to="/" text="Home" />
-        </ListItemStyle>
-        <ListItemStyle>
-          <StyledLinkComponent to="/about" text="About" />
-        </ListItemStyle>
-        <ListItemStyle>
-          <StyledLinkComponent to="/topics" text="Systems" />
-        </ListItemStyle>
-        <ListItemStyle>
-          <StyledLinkComponent to="/tool" text="Tool" />
-        </ListItemStyle>
-        <ListItemStyle>
-          <StyledLinkComponent to="/data" text="Data science" />
-        </ListItemStyle>
-        <ListItemStyle>
-          <StyledLinkComponent to="/blockchain" text="Blockchain" />
-        </ListItemStyle>
-        <ListItemStyle>
-          <StyledLinkComponent to="/mobile" text="Mobile" />
-        </ListItemStyle>
-        <ListItemStyle>
-          <StyledLinkComponent to="/awesome-list" text="Awesome List" />
-        </ListItemStyle>
-        <ListItemStyle>
-          <StyledLinkComponent to="/social" text="Social" />
-        </ListItemStyle>
-        <ListItemStyle>
-          <StyledLinkComponent to="/visual" text="Visual" />
-        </ListItemStyle>
-        <ListItemStyle>
-          <StyledLinkComponent to="/open-source" text="Open source" />
-        </ListItemStyle>
-        <ListItemStyle>
-          <StyledLinkComponent to="/all-topics" text="All topics" />
-        </ListItemStyle>
+        {navigationList.map((item, index)=> (
+          <ListItemStyle key={item + index}>
+            <StyledLinkComponent to={"/" + item} text={item} tagsProp = {tagsProp}/>
+          </ListItemStyle>
+        ))}
       </UlStyle>
-
-      <Route exact path="/"/>
-      <Route path="/about"/>
-      <Route path="/topics"/>
     </div>
   </Router>
 );
 
-export default RouterList;
+const mapDispatchToProps = (dispatch) => ({
+  tagsProp: (showing) => dispatch(showTAGS(showing)),
+})
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(RouterList);

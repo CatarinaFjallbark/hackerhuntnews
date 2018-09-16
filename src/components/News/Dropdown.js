@@ -5,7 +5,7 @@ import { DropdownButton, MenuItem } from 'react-bootstrap';
 const Dropdown = () => (
     <DropdownButton
         bsStyle="default"
-        bsSize="smal"
+        bsSize="small"
         title="POPULAR"
         id="dd"
     >

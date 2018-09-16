@@ -54,7 +54,7 @@ const Tag = styled.span`
     flex-end;
 `
 
-const PostComponent = ({ id, likes, shares, header, content, time, account, tags, increment, incrementSHARES }) => (
+const PostComponent = ({ id, likes, shares, header, content, time, account, tags, increment, incrementSHARES}) => (
     <PostStyleGrid>
         <VotingDiv>
             <Row1>
@@ -73,8 +73,8 @@ const PostComponent = ({ id, likes, shares, header, content, time, account, tags
             <LastRowStyle>
                 <Row3Text>{time} &nbsp; by &nbsp; {account}</Row3Text>
                 <span>&nbsp;&nbsp;&nbsp;</span>
-                {tags.map(tag =>
-                    <div>
+                {tags.map((tag, index) =>
+                    <div key={tag + index}>
                         <Tag>{tag}</Tag>
                         <span>&nbsp;</span>
                     </div>

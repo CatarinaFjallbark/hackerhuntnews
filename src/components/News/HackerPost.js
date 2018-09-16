@@ -31,7 +31,7 @@ const DrpDownStyle = styled.div`
     align-items: center;
 `
 
-const HackerPost = ({postsProp, incrementLIKES, incrementSHARES}) => (
+const HackerPost = ({postsProp, tags, incrementLIKES, incrementSHARES}) => (
     <Wrapper>
         <AboveFlowDiv>
             <HeaderStyle>TODAY</HeaderStyle>
@@ -43,8 +43,11 @@ const HackerPost = ({postsProp, incrementLIKES, incrementSHARES}) => (
                 <Dropdown />
             </DrpDownStyle>
         </AboveFlowDiv>
-        {postsProp.map(post => 
+        {postsProp.filter((post)=>(
+            tags.length === 0 || post.tags.includes(tags[0].replace("-", "").toUpperCase())
+        )).map((post, index) => 
             <PostComponent
+            key={post + index}
             id = {post.id}
             likes = {post.likes}
             shares = {post.shares}
@@ -64,7 +67,8 @@ const HackerPost = ({postsProp, incrementLIKES, incrementSHARES}) => (
 
 const mapStateToProps = ({ posts }) => {
     return {
-        postsProp: posts.list_of_posts
+        postsProp: posts.list_of_posts,
+        tags: posts.selected_tags
     }
 }
 const mapDispatchToProps = (dispatch) => ({
