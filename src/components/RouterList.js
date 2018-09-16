@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import logo from "../icons/logo.png"
+import logo from "./icons/logo.png"
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 const Wrapper = styled.div`
@@ -17,8 +17,6 @@ const ImgBulletStyle = styled.img`
   width: auto;
   margin-top: 4px;
 `
-
-
 const StyledLinkComponent = (props) => (
   <Wrapper>
     <ImgBulletStyle src={logo} alt="bulletlogo"></ImgBulletStyle>

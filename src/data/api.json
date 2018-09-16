@@ -3,62 +3,134 @@
         {
             "id": 0,
             "likes":0,
-            "comments":0,
+            "shares":0,
             "header": "hiration.com",
             "content": "Professional profile management tool using React",
             "time": "6 hours ago",
             "account": "cattazzz",
-            "tags": ["WEB", "EXAMPLE", "SYSTEMS", "TOOL"]
+            "tags": ["WEB", "TOOL", "SYSTEMS", "TOOL"],
+            "showing": true
           },
           {
             "id": 1,
             "likes":0,
-            "comments":0,
+            "shares":0,
             "header": "gameofcoins.com",
             "content": "Professional profile management tool using React",
             "time": "6 hours ago",
             "account": "cattazzz",
-            "tags": ["WEB", "EXAMPLE", "DEVELOPMENT", "BLOCKCHAIN", "OPEN SOURCE"]
+            "tags": ["WEB", "TOOL", "DEVELOPMENT", "BLOCKCHAIN", "OPEN SOURCE"],
+            "showing": true
           },        
           {
             "id": 2,
             "likes":0,
-            "comments":0,
+            "shares":0,
             "header": "diskyt.com",
             "content": "Professional profile management tool using React",
             "time": "6 hours ago",
             "account": "cattazzz",
-            "tags": ["WEB", "EXAMPLE", "DEVELOPMENT"]
+            "tags": ["WEB", "TOOL", "DEVELOPMENT"],
+            "showing": true
           },        
           {
             "id": 3,
             "likes":0,
-            "comments":0,
+            "shares":0,
             "header": "Multi-OS Serverless functions with docker",
             "content": "Professional profile management tool using React",
             "time": "6 hours ago",
             "account": "cattazzz",
-            "tags": ["WEB", "EXAMPLE", "DEVELOPMENT", "VISUAL", "TOOL"]
+            "tags": ["WEB", "TOOL", "DEVELOPMENT", "VISUAL", "TOOL"],
+            "showing": true
           },        
           {
             "id": 4,
             "likes":0,
-            "comments":0,
+            "shares":0,
             "header": "Brainstorm Troubles",
             "content": "Professional profile management tool using React",
             "time": "6 hours ago",
             "account": "cattazzz",
-            "tags": ["WEB", "EXAMPLE", "VISUAL", "TOOL", "DATASCIENCE", "MOBILE"]
+            "tags": ["TOOL", "VISUAL", "TOOL", "DATASCIENCE", "MOBILE"],
+            "showing": true
           },        
           {
             "id": 5,
             "likes":0,
-            "comments":0,
+            "shares":0,
             "header": "bvnk.co",
             "content": "Professional profile management tool using React",
             "time": "6 hours ago",
             "account": "cattazzz",
-            "tags": ["BLOCKCHAIN", "OPEN SOURCE", "VISUAL"]
+            "tags": ["BLOCKCHAIN", "OPEN SOURCE", "VISUAL"],
+            "showing": true
+          },
+          {
+            "id": 6,
+            "likes":0,
+            "shares":0,
+            "header": "hiration.com 2",
+            "content": "Professional profile management tool using React",
+            "time": "6 hours ago",
+            "account": "cattazzz",
+            "tags": ["WEB", "TOOL", "SYSTEMS", "TOOL"],
+            "showing": true
+          },
+          {
+            "id": 7,
+            "likes":0,
+            "shares":0,
+            "header": "gameofcoins.com 2",
+            "content": "Professional profile management tool using React",
+            "time": "6 hours ago",
+            "account": "cattazzz",
+            "tags": ["WEB", "TOOL", "DEVELOPMENT", "BLOCKCHAIN", "OPEN SOURCE"],
+            "showing": true
+          },        
+          {
+            "id": 8,
+            "likes":0,
+            "shares":0,
+            "header": "diskyt.com 2",
+            "content": "Professional profile management tool using React",
+            "time": "6 hours ago",
+            "account": "cattazzz",
+            "tags": ["WEB", "TOOL", "DEVELOPMENT"],
+            "showing": true
+          },        
+          {
+            "id": 9,
+            "likes":0,
+            "shares":0,
+            "header": "Multi-OS Serverless functions with docker 2",
+            "content": "Professional profile management tool using React",
+            "time": "6 hours ago",
+            "account": "cattazzz",
+            "tags": ["WEB", "TOOL", "DEVELOPMENT", "VISUAL", "TOOL"],
+            "showing": true
+          },        
+          {
+            "id": 10,
+            "likes":0,
+            "shares":0,
+            "header": "Brainstorm Troubles 2",
+            "content": "Professional profile management tool using React",
+            "time": "6 hours ago",
+            "account": "cattazzz",
+            "tags": ["TOOL", "VISUAL", "TOOL", "DATASCIENCE", "MOBILE"],
+            "showing": true
+          },        
+          {
+            "id": 11,
+            "likes":0,
+            "shares":0,
+            "header": "bvnk.co 2",
+            "content": "Professional profile management tool using React",
+            "time": "6 hours ago",
+            "account": "cattazzz",
+            "tags": ["BLOCKCHAIN", "OPEN SOURCE", "VISUAL"],
+            "showing": true
           }
     ]
 }

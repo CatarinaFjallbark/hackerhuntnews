@@ -1,7 +1,13 @@
 import React from 'react';
+import { connect } from 'react-redux'
 import styled from 'styled-components';
 import PostComponent from './PostComponent'
 import Dropdown from './Dropdown'
+
+import {
+    incrementLIKES,
+    incrementSHARES
+  } from '../../reducers/posts'
 
 const Wrapper = styled.div`
     margin-left: 75px;
@@ -25,7 +31,7 @@ const DrpDownStyle = styled.div`
     align-items: center;
 `
 
-const HackerPost = () => (
+const HackerPost = ({postsProp, incrementLIKES, incrementSHARES}) => (
     <Wrapper>
         <AboveFlowDiv>
             <HeaderStyle>TODAY</HeaderStyle>
@@ -37,19 +43,36 @@ const HackerPost = () => (
                 <Dropdown />
             </DrpDownStyle>
         </AboveFlowDiv>
-        <PostComponent />
-        <br />
-        <PostComponent />
-        <br />
-        <PostComponent />
-        <br />
-        <PostComponent />
-        <br />
-        <PostComponent />
-        <br />
-        <PostComponent />
-        <br />
-        <PostComponent />
+        {postsProp.map(post => 
+            <PostComponent
+            id = {post.id}
+            likes = {post.likes}
+            shares = {post.shares}
+            header = {post.header}
+            content = {post.content}
+            time = {post.time}
+            account = {post.account}
+            tags = {post.tags}
+            showing = {post.showing}
+            increment={incrementLIKES}
+            incrementSHARES={incrementSHARES}
+            />                
+        )
+        }
     </Wrapper>
 );
-export default HackerPost;
+
+const mapStateToProps = ({ posts }) => {
+    return {
+        postsProp: posts.list_of_posts
+    }
+}
+const mapDispatchToProps = (dispatch) => ({
+    incrementLIKES: (id) => dispatch(incrementLIKES(id)),
+    incrementSHARES: (id) => dispatch(incrementSHARES(id)),
+  })
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(HackerPost);

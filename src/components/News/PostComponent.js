@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import comment from "../icons/comment.png"
+import share from "../icons/share.png"
 import thumb from "../icons/thumb.png"
 
 const PostStyleGrid = styled.div`
@@ -44,25 +44,45 @@ const Row3Text = styled.div`
   font-weight: light;
   color: gray;
 `
+const LastRowStyle = styled.div`
+  display: flex;
+`
+const Tag = styled.span`
+    border: 1px solid gray;
+    padding: 2px;
+    color: gray;
+    flex-end;
+`
 
-const PostComponent = () => (
+const PostComponent = ({ id, likes, shares, header, content, time, account, tags, increment, incrementSHARES }) => (
     <PostStyleGrid>
         <VotingDiv>
             <Row1>
-                <img src={thumb} alt="thumb"></img>
-                <span>&nbsp; 5</span>
+                <img src={thumb} alt="thumb" onClick={() => increment(id)}></img>
+                <span>&nbsp; {likes}</span>
             </Row1>
             <Row2>
-                <img src={comment} alt="comment"></img>
-                <span>&nbsp; 3</span>
+                <img src={share} alt="shares" onClick={() => incrementSHARES(id)}></img>
+                <span>&nbsp; {shares}</span>
             </Row2>
             <Row3></Row3>
         </VotingDiv>
         <TextDiv>
-            <Row1Text>hiration.com</Row1Text>
-            <Row2Text>Professional profile management tool using React</Row2Text>
-            <Row3Text>6 hours ago by cattazzz</Row3Text>
+            <Row1Text>{header}</Row1Text>
+            <Row2Text>{content}</Row2Text>
+            <LastRowStyle>
+                <Row3Text>{time} &nbsp; by &nbsp; {account}</Row3Text>
+                <span>&nbsp;&nbsp;&nbsp;</span>
+                {tags.map(tag =>
+                    <div>
+                        <Tag>{tag}</Tag>
+                        <span>&nbsp;</span>
+                    </div>
+                )
+                }
+            </LastRowStyle>
         </TextDiv>
+        <br />
     </PostStyleGrid>
 );
 
