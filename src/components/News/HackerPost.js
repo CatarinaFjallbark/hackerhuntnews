@@ -8,7 +8,7 @@ import {
     incrementLIKES,
     incrementSHARES,
     sortBy
-  } from '../../reducers/posts'
+} from '../../reducers/posts'
 
 const Wrapper = styled.div`
     margin-left: 75px;
@@ -32,7 +32,35 @@ const DrpDownStyle = styled.div`
     align-items: center;
 `
 
-const HackerPost = ({postsProp, sortByProp, sortByAcProp, tags, incrementLIKES, incrementSHARES}) => (
+function handleSortList(postsProp, sortByProp, tags) {
+    let resultList = [];
+    resultList = postsProp.filter((post) => (
+        tags.length === 0 || post.tags.includes(tags[0].replace("-", "").toUpperCase())
+    ))
+    switch (sortByProp) {
+        case "Most shared":
+            return resultList.sort(function (a, b) {
+                return (a.shares - b.shares);
+            }).reverse();
+        case "Most liked":
+            return resultList.sort(function (a, b) {
+                return (a.likes - b.likes);
+            }).reverse();
+        case "Newest first":
+            return resultList.sort(function (a, b) {
+                return (a.time - b.time);
+            });
+        case "Oldest first":
+            return resultList.sort(function (a, b) {
+                return (a.time - b.time);
+            }).reverse();
+        default:
+            return resultList;
+
+    }
+}
+
+const HackerPost = ({ postsProp, sortByProp, sortByAcProp, tags, incrementLIKES, incrementSHARES }) => (
     <Wrapper>
         <AboveFlowDiv>
             <HeaderStyle>TODAY</HeaderStyle>
@@ -41,27 +69,26 @@ const HackerPost = ({postsProp, sortByProp, sortByAcProp, tags, incrementLIKES, 
             <div></div>
             <div></div>
             <DrpDownStyle>
-                <Dropdown sortBy={sortByProp} sortByAc = {sortByAcProp}/>
+                <Dropdown sortBy={sortByProp} sortByAc={sortByAcProp} />
             </DrpDownStyle>
         </AboveFlowDiv>
-        {postsProp.filter((post)=>(
-            tags.length === 0 || post.tags.includes(tags[0].replace("-", "").toUpperCase())
-        )).map((post, index) => 
-            <PostComponent
-            key={post + index}
-            id = {post.id}
-            likes = {post.likes}
-            shares = {post.shares}
-            header = {post.header}
-            content = {post.content}
-            time = {`${post.time} days ago`}
-            account = {post.account}
-            tags = {post.tags}
-            showing = {post.showing}
-            increment={incrementLIKES}
-            incrementSHARES={incrementSHARES}
-            />                
-        )
+        {
+            handleSortList(postsProp, sortByProp, tags).map((post, index) =>
+                <PostComponent
+                    key={post + index}
+                    id={post.id}
+                    likes={post.likes}
+                    shares={post.shares}
+                    header={post.header}
+                    content={post.content}
+                    time={`${post.time} days ago`}
+                    account={post.account}
+                    tags={post.tags}
+                    showing={post.showing}
+                    increment={incrementLIKES}
+                    incrementSHARES={incrementSHARES}
+                />
+            )
         }
     </Wrapper>
 );
@@ -77,7 +104,7 @@ const mapDispatchToProps = (dispatch) => ({
     incrementLIKES: (id) => dispatch(incrementLIKES(id)),
     incrementSHARES: (id) => dispatch(incrementSHARES(id)),
     sortByAcProp: (title) => dispatch(sortBy(title)),
-  })
+})
 
 export default connect(
     mapStateToProps,
