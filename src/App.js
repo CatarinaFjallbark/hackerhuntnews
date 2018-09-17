@@ -69,6 +69,12 @@ const HeaderStyle = styled.div`
 `
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      inputValue: "hej"
+    }
+  }
   render() {
     return (
       <Wrapper>
@@ -77,7 +83,7 @@ class App extends Component {
         </LogoDiv>
         <SearchDiv>
           <HeadLineStyle>Hacker Hunt News</HeadLineStyle>
-          <InputStyle type="text:focus" placeholder="search news"></InputStyle>
+          <InputStyle type="text:focus" placeholder="search news" value={this.state.inputValue} onChange={(event) => this.setState({inputValue: event.target.value})} ></InputStyle>
         </SearchDiv>
         <MenuDiv>
           <HeaderStyle>TOPICS</HeaderStyle>

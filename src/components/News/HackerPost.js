@@ -56,7 +56,6 @@ function handleSortList(postsProp, sortByProp, tags) {
             }).reverse();
         default:
             return resultList;
-
     }
 }
 
