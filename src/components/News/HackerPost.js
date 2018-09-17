@@ -6,7 +6,8 @@ import Dropdown from './Dropdown'
 
 import {
     incrementLIKES,
-    incrementSHARES
+    incrementSHARES,
+    sortBy
   } from '../../reducers/posts'
 
 const Wrapper = styled.div`
@@ -31,7 +32,7 @@ const DrpDownStyle = styled.div`
     align-items: center;
 `
 
-const HackerPost = ({postsProp, tags, incrementLIKES, incrementSHARES}) => (
+const HackerPost = ({postsProp, sortByProp, sortByAcProp, tags, incrementLIKES, incrementSHARES}) => (
     <Wrapper>
         <AboveFlowDiv>
             <HeaderStyle>TODAY</HeaderStyle>
@@ -40,7 +41,7 @@ const HackerPost = ({postsProp, tags, incrementLIKES, incrementSHARES}) => (
             <div></div>
             <div></div>
             <DrpDownStyle>
-                <Dropdown />
+                <Dropdown sortBy={sortByProp} sortByAc = {sortByAcProp}/>
             </DrpDownStyle>
         </AboveFlowDiv>
         {postsProp.filter((post)=>(
@@ -53,7 +54,7 @@ const HackerPost = ({postsProp, tags, incrementLIKES, incrementSHARES}) => (
             shares = {post.shares}
             header = {post.header}
             content = {post.content}
-            time = {post.time}
+            time = {`${post.time} days ago`}
             account = {post.account}
             tags = {post.tags}
             showing = {post.showing}
@@ -68,12 +69,14 @@ const HackerPost = ({postsProp, tags, incrementLIKES, incrementSHARES}) => (
 const mapStateToProps = ({ posts }) => {
     return {
         postsProp: posts.list_of_posts,
-        tags: posts.selected_tags
+        tags: posts.selected_tags,
+        sortByProp: posts.sort_by
     }
 }
 const mapDispatchToProps = (dispatch) => ({
     incrementLIKES: (id) => dispatch(incrementLIKES(id)),
     incrementSHARES: (id) => dispatch(incrementSHARES(id)),
+    sortByAcProp: (title) => dispatch(sortBy(title)),
   })
 
 export default connect(

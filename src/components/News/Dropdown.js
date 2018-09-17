@@ -2,16 +2,32 @@ import React from 'react';
 import 'bootstrap3/dist/css/bootstrap.css';
 import { DropdownButton, MenuItem } from 'react-bootstrap';
 
-const Dropdown = () => (
+function getSortList(sortBy) {
+    let titles = ["Most shared", "Most liked", "Newest first", "Oldest first"];
+    let drpDwnList = [];
+    titles.map((title, index) => (
+        drpDwnList.push({ title: title, active: sortBy === title ? true : false, id: index })
+    ));
+
+    return drpDwnList;
+}
+
+const Dropdown = ({sortBy, sortByAc}) => (    
     <DropdownButton
         bsStyle="default"
         bsSize="small"
-        title="POPULAR"
+        title="Sort by"
         id="dd"
     >
-        <MenuItem eventKey="1">Featured</MenuItem>
-        <MenuItem eventKey="2">Newest first</MenuItem>
-        <MenuItem eventKey="3">Oldest first</MenuItem>
+    { getSortList(sortBy).map(drpDwnItem => (
+        <MenuItem 
+            key={drpDwnItem.id}
+            eventKey= {drpDwnItem.id}
+            onSelect={() => sortByAc(drpDwnItem.title)}
+            active={drpDwnItem.active}>
+            {drpDwnItem.title}
+        </MenuItem>
+    )) }
     </DropdownButton>
 );
 

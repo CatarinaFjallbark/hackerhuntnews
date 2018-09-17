@@ -10,7 +10,7 @@ export const INCREMENTSHARES = 'INCREMENTSHARES'
 function creatInitialState() {
     let list_of_posts = [];
     let selected_tags = [];
-    let sort_by = "POPULAR";
+    let sort_by = "Newest first";
     list_of_posts = data.posts;
     return { list_of_posts, selected_tags, sort_by };
 }
