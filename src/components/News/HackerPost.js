@@ -32,11 +32,20 @@ const DrpDownStyle = styled.div`
     align-items: center;
 `
 
-function handleSortList(postsProp, sortByProp, tags) {
+function handleSortList(search, postsProp, sortByProp, tags) {
+    let tempList = postsProp.slice();
+    let inputList = [];
     let resultList = [];
-    resultList = postsProp.filter((post) => (
+    if (search.length > 0) {
+        inputList = tempList.filter(post => (
+            post.header.toLowerCase().includes(search.toLowerCase()) || post.content.toLowerCase().includes(search.toLowerCase()) || post.account.toLowerCase().includes(search.toLowerCase())
+        ))
+        tempList = inputList.slice();
+    }
+    resultList = tempList.filter(post => (
         tags.length === 0 || post.tags.includes(tags[0].replace("-", "").toUpperCase())
     ))
+
     switch (sortByProp) {
         case "Most shared":
             return resultList.sort(function (a, b) {
@@ -57,9 +66,10 @@ function handleSortList(postsProp, sortByProp, tags) {
         default:
             return resultList;
     }
+
 }
 
-const HackerPost = ({ postsProp, sortByProp, sortByAcProp, tags, incrementLIKES, incrementSHARES }) => (
+const HackerPost = ({ search, postsProp, sortByProp, sortByAcProp, tags, incrementLIKES, incrementSHARES }) => (
     <Wrapper>
         <AboveFlowDiv>
             <HeaderStyle>TODAY</HeaderStyle>
@@ -72,7 +82,7 @@ const HackerPost = ({ postsProp, sortByProp, sortByAcProp, tags, incrementLIKES,
             </DrpDownStyle>
         </AboveFlowDiv>
         {
-            handleSortList(postsProp, sortByProp, tags).map((post, index) =>
+            handleSortList(search, postsProp, sortByProp, tags).map((post, index) =>
                 <PostComponent
                     key={post + index}
                     id={post.id}

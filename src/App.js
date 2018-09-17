@@ -72,7 +72,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      inputValue: "hej"
+      inputValue: ""
     }
   }
   render() {
@@ -90,7 +90,7 @@ class App extends Component {
           <RouterList />
         </MenuDiv>
         <ListDiv>
-          <HackerPost />
+          <HackerPost search = {this.state.inputValue}/>
         </ListDiv>
       </Wrapper>
     );
