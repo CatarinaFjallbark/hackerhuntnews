@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux'
 import styled from 'styled-components';
 import logo from "./icons/logo.png"
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import {
   showTAGS,
@@ -35,7 +35,6 @@ const StyledLinkComponent = (props) => (
 );
 
 const RouterList = ({ tagsProp }) => (
-  <Router>
     <div>
       <UlStyle>
         {navigationList.map((item, index)=> (
@@ -45,7 +44,6 @@ const RouterList = ({ tagsProp }) => (
         ))}
       </UlStyle>
     </div>
-  </Router>
 );
 
 const mapDispatchToProps = (dispatch) => ({

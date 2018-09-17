@@ -48,21 +48,21 @@ function handleSortList(search, postsProp, sortByProp, tags) {
 
     switch (sortByProp) {
         case "Most shared":
-            return resultList.sort(function (a, b) {
-                return (a.shares - b.shares);
-            }).reverse();
+            return resultList.sort((a, b) => {
+                return (b.shares - a.shares);
+            });
         case "Most liked":
-            return resultList.sort(function (a, b) {
-                return (a.likes - b.likes);
-            }).reverse();
+            return resultList.sort((a, b) => {
+                return (b.likes - a.likes);
+            });
         case "Newest first":
-            return resultList.sort(function (a, b) {
+            return resultList.sort((a, b) => {
                 return (a.time - b.time);
             });
         case "Oldest first":
-            return resultList.sort(function (a, b) {
-                return (a.time - b.time);
-            }).reverse();
+            return resultList.sort((a, b) => {
+                return (b.time - a.time);
+            });
         default:
             return resultList;
     }

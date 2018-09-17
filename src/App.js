@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import RouterList from './components/RouterList';
 import HackerPost from './components/News/HackerPost';
+import RouterList from './components/RouterList'
 import styled from 'styled-components';
 import logo from "./components/icons/logo.png"
+import { BrowserRouter as Router} from "react-router-dom";
 
 const Wrapper = styled.div`
     display:grid;
@@ -83,18 +84,21 @@ class App extends Component {
         </LogoDiv>
         <SearchDiv>
           <HeadLineStyle>Hacker Hunt News</HeadLineStyle>
-          <InputStyle type="text:focus" placeholder="search news" value={this.state.inputValue} onChange={(event) => this.setState({inputValue: event.target.value})} ></InputStyle>
+          <InputStyle type="text:focus" placeholder="search news" value={this.state.inputValue} onChange={(event) => this.setState({ inputValue: event.target.value })} ></InputStyle>
         </SearchDiv>
         <MenuDiv>
           <HeaderStyle>TOPICS</HeaderStyle>
-          <RouterList />
+          <div>
+            <Router>
+              <RouterList />
+            </Router>
+          </div>
         </MenuDiv>
         <ListDiv>
-          <HackerPost search = {this.state.inputValue}/>
+          <HackerPost search={this.state.inputValue} />
         </ListDiv>
       </Wrapper>
     );
   }
 }
-
 export default App;
